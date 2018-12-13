@@ -8,10 +8,13 @@ def load(file):
   return output
 
 def solve(data):
-  floor = 0
-  for move in data:
+  (floor, fb) = (0, 0)
+
+  for idx, move in enumerate(data):
     try: floor = act[move](floor)
     except KeyError: pass
-  return floor
+    if floor < 0 and not fb: fb = idx + 1
 
-print solve(load(data_in))
+  print "Pt1: {}\nPt2: {}".format(floor, fb)
+
+solve(load(data_in))
