@@ -2,7 +2,7 @@
 
 data_in = 'inputs/aoc03.in'
 
-act={'<': lambda x: x[0] - 1, '>': lambda x: x[0] + 1, '^': lambda x: x[1] + 1, 'v': lambda x: x[1] - 1}
+act={'<': lambda x: [x[0] - 1, x[1]], '>': lambda x: [x[0] + 1, x[1]], '^': lambda x: [x[0], x[1] + 1], 'v': lambda x: [x[0], x[1] - 1]}
 
 def load(file):
   with open(file) as x: output = x.read()
@@ -11,11 +11,11 @@ def load(file):
 def solve(data):
   p1 = set()
   p2 = 0
-  cp = [0, 0]
+  (rp, sp) = ([0, 0], [0, 0])
 
   for mv in data:
-    cp = act[mv](cp)
-    print cp
+    sp = act[mv](sp)
+    p1.add("{}:{}".format(sp[0], sp[1]))
 
   print "Pt1: {}\nPt2: {}".format(len(p1), p2)
 
