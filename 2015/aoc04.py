@@ -16,7 +16,6 @@ hash = in_generator()
 
 while(True):
   out = hash.next()
-  print out
   if(hashlib.md5("{}{}".format(input, out)).hexdigest()[:5] == '00000' and not solution[5]): 
     solution[5] = out
   if(hashlib.md5("{}{}".format(input, out)).hexdigest()[:6] == '000000' and not solution[6]): 
