@@ -8,21 +8,22 @@ def load(file):
   with open(file) as x: output = x.read()
   return output.replace('\n', '')
 
+def move(pos, mv, cache):
+  pos = act[mv](pos)
+  cache.add("{}:{}".format(pos[0], pos[1]))
+  return (pos, cache)
+
 def solve(data):
-  p1 = set()
-  p2 = set()
+  (p1, p2) = (set(), set())
   (rsp, sp, nsp) = ([0, 0], [0, 0], [0, 0])
 
   for idx, mv in enumerate(data):
-    sp = act[mv](sp)
-    p1.add("{}:{}".format(sp[0], sp[1]))
+    (sp, p1) = move(sp, mv, p1)
 
     if idx % 2:
-      rsp = act[mv](rsp)
-      p2.add("{}:{}".format(rsp[0], rsp[1]))
+      (rsp, p2) = move(rsp, mv, p2)
     else:
-      nsp = act[mv](nsp)
-      p2.add("{}:{}".format(nsp[0], nsp[1]))
+      (nsp, p2) = move(nsp, mv, p2)
 
   print "Pt1: {}\nPt2: {}".format(len(p1), len(p2))
 
