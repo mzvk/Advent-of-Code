@@ -2,28 +2,29 @@
 
 data_in = 'inputs/aoc04.in'
 
-import hashlib, sys
+import hashlib, sys, os
 
-sufix = lambda s = 0: (str(s + 1*x) for x, _ in enumerate(iter(int, 1)))
-progress = '\|/-\|/-'
+gensfx = lambda s = 0: (str(s + 1*x) for x, _ in enumerate(iter(int, 1)))
 
-solution = {5: '', 6: ''}
-	
-input = 'yzbqklnj'
+def load(file):
+  with open(file) as x: output = x.read()
+  return output.replace('\n', '')
 
-for value in sufix():
-  if(hashlib.md5("{}{}".format(input, value)).hexdigest()[:5] == '0' * 5 and not solution[5]):
-    sys.stdout.write("\r ** five 0's solution found **\n")
+def solve(data):
+  progress = '\|/-\|/-'
+  output = [0, 0]
+  for sufix in gensfx():
+    if(hashlib.md5("{}{}".format(data, sufix)).hexdigest()[:5] == '0' * 5 and not output[0]): output[0] = sufix
+    if(hashlib.md5("{}{}".format(data, sufix)).hexdigest()[:6] == '0' * 6 and not output[1]): output[1] = sufix
+    if(output[0] and output[1]):
+      sys.stdout.write("\rPt1: {n1:{width}}\nPt2: {n2:{width}}".format(n1=output[0], n2=output[1], width=len(sufix)))
+      sys.stdout.flush()
+      return 0
+    sys.stdout.write("\r [{}] {}".format(progress[int(sufix) % 8], sufix))
     sys.stdout.flush()
-    solution[5] = value
 
-  if(hashlib.md5("{}{}".format(input, value)).hexdigest()[:6] == '0' * 6 and not solution[6]): 
-    sys.stdout.write("\r ** six 0's solution found **\n")
-    sys.stdout.flush()  
-    solution[6] = value	
-  
-  if(solution[5] and solution[6]): break
-  sys.stdout.write("\r [{}] {}".format(progress[int(value) % 8], value))
-  sys.stdout.flush()
-
-print "Pt1: {}\nPt2: {}".format(solution[5], solution[6])
+try:
+  os.system('setterm -cursor off')
+  solve(load(data_in))
+finally:
+  os.system('setterm -cursor on')

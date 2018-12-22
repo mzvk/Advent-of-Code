@@ -11,9 +11,9 @@ def load(file):
 def solve(data):
   p1 = set()
   p2 = 0
-  (rp, sp) = ([0, 0], [0, 0])
+  (rsp, sp, nsp) = ([0, 0], [0, 0], [0, 0])
 
-  for mv in data:
+  for idx, mv in enumerate(data):
     sp = act[mv](sp)
     p1.add("{}:{}".format(sp[0], sp[1]))
 
