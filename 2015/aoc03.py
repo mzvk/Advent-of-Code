@@ -15,15 +15,12 @@ def move(pos, mv, cache):
 def solve(data):
   (p1, p2) = (set(), set())
   (rsp, sp, nsp) = ([0, 0], [0, 0], [0, 0])
-
   for idx, mv in enumerate(data):
     (sp, p1) = move(sp, mv, p1)
-
     if idx % 2:
       (rsp, p2) = move(rsp, mv, p2)
     else:
       (nsp, p2) = move(nsp, mv, p2)
-
   print "Pt1: {}\nPt2: {}".format(len(p1), len(p2))
 
 solve(load(data_in))
