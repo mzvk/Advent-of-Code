@@ -9,21 +9,10 @@ def load(file):
   return [ol for ol in output.split('\n') if ol]
 
 def solve(data):
-  total1 = 0
-  total2 = 0
+  output = [0, 0]
   for word in data:
-    nice = 0
-    nice2 = 0
-    if re.search(r'([a-z])\1', word): nice += 1
-    if not re.search(r'ab|cd|pq|xy', word): nice += 1
-    if re.search(r'[aeiou].*[aeiou].*[aeiou]', word): nice += 1
+    if re.search(r'([a-z])\1', word) and not re.search(r'ab|cd|pq|xy', word) and re.search(r'[aeiou].*[aeiou].*[aeiou]', word): output[0] += 1
+    if re.search(r'([a-z][a-z]).*\1', word) and re.search(r'([a-z]).\1', word): output[1] += 1
+  print "Pt1: {}\nPt2: {}".format(output[0], output[1])
 
-    if re.search(r'([a-z][a-z]).*\1', word): nice2 += 1
-    if re.search(r'([a-z]).\1', word): nice2 += 1
-
-    if nice == 3: total1 += 1
-    if nice2 == 2: total2 += 1
-
-  return (total1, total2)
-
-print solve(load(data_in))
+solve(load(data_in))
