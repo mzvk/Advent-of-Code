@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 
-data_in = 'inputs/aoc04.in'
-
 import hashlib, sys, os
 
+data_in = 'inputs/aoc04.in'
 gensfx = lambda s = 0: (str(s + 1*x) for x, _ in enumerate(iter(int, 1)))
 
 def load(file):
