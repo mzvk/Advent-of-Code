@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 data_in = 'inputs/aoc06.in'
+act = {}
 
 def load(file):
   with open(file) as x: output = x.read()
