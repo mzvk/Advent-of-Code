@@ -301,11 +301,6 @@ data = r'''"azlgxdbljwygyttzkfwuxv"
 "gk"
 "\\zrs\\syur"'''
 
-data1=r'''""
-"abc"
-"aaa\"aaa"
-"\x27"'''
-
 def parse(data):
   return data.split('\n')
 
