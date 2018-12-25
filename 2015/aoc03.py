@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 
 data_in = 'inputs/aoc03.in'
-act={'<': lambda x: [x[0] - 1, x[1]], '>': lambda x: [x[0] + 1, x[1]], '^': lambda x: [x[0], x[1] + 1], 'v': lambda x: [x[0], x[1] - 1]}
+act = {'<': lambda x: [x[0] - 1, x[1]], 
+       '>': lambda x: [x[0] + 1, x[1]], 
+       '^': lambda x: [x[0], x[1] + 1], 
+       'v': lambda x: [x[0], x[1] - 1]}
 
 def load(file):
   with open(file) as x: output = x.read()
