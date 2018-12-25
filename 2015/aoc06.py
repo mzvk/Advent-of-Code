@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 data_in = 'inputs/aoc06.in'
-act = {}
+act = {'turn on':  lambda x: x + 1, 'turn off': lambda x: x - 1, 'toggle':   lambda x: x + 2}
 
 def load(file):
   with open(file) as x: output = x.read()
