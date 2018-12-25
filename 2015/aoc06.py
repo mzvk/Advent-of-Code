@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
+import re
+
 data_in = 'inputs/aoc06.in'
-act = {'turn on':  lambda x: x + 1, 'turn off': lambda x: x - 1, 'toggle':   lambda x: x + 2}
+act = {'on':  lambda x: x + 1, 'off': lambda x: x - 1, 'toggle':   lambda x: x + 2}
 
 def load(file):
   with open(file) as x: output = x.read()
@@ -12,6 +14,9 @@ def gridInit(size, grid = []):
   return grid
 
 def solve(data):
-  pass
-
+  grid = gridInit(1000)
+  for action in data:
+    action = re.search(r'^(?:turn )?(off|on|toggle) (\d+),(\d+) through (\d+),(\d+)', action)
+    
+    
 print load(data_in)
