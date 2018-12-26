@@ -9,14 +9,12 @@ def load(file):
 def look_say(start):
   (current, counter) = ('', 0)
   new = ''
-
   for digit in start:
     if current != digit:
       if current: new = '{}{}{}'.format(new, counter, current)
       current = digit
       counter = 1
     else: counter += 1
-
   return '{}{}{}'.format(new, counter, current)
 
 def solve(data):
