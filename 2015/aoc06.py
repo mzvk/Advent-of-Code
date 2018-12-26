@@ -4,6 +4,7 @@ import re
 
 data_in = 'inputs/aoc06.in'
 act = {'on':  lambda x: x + 1, 'off': lambda x: x - 1, 'toggle':   lambda x: x + 2}
+carea = lambda x: (x[3] - x[1]) * (x[2] - x[0])
 
 def load(file):
   with open(file) as x: output = x.read()
