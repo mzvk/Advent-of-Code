@@ -22,7 +22,6 @@ def look_say(start):
 def solve(data):
   start = data
   for x in xrange(50):
-    print "now: {}".format(x)
     start = look_say(start)
     if x == 39: part1 = len(start)
   print "Pt1:{}\nPt2:{}".format(part1, len(start))
