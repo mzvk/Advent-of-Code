@@ -2,9 +2,14 @@
 
 data_in = 'inputs/aoc10.in'
 
+#subsequance = {}
+
 def load(file):
   with open(file) as x: output = x.read()
   return output.replace('\n', '')
+
+def seqsplit(seq):
+  pass
 
 def look_say(start):
   (current, counter) = ('', 0)
