@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-data_in = 'inputs/aoc10.in'
+data_in = '../inputs/aoc10.in'
 
 def load(file):
   with open(file) as x: output = x.read()
