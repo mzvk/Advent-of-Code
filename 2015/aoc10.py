@@ -13,7 +13,24 @@ def lnslen(els):
     dl += len(elems[el][0])
   return dl
 
-def solve(data):
-  pass
+def seqdisc(seq, x=0, slist=[]):
+  ss = []
+  if not slist: slist = [v for v in xrange(1, 93)]
+  for sub in slist:
+    if len(elems[sub][0]) > x  and seq[x] == elems[sub][0][x]: ss.append(sub)
+  if x == len(seq) - 1: return [x for x in ss if len(elems[x][0]) == len(seq)][0]
+  if len(ss) == 1: return ss[0]
+  return seqdisc(seq, x + 1, ss)
 
+def solve(data):  
+  output = []
+  init = [seqdisc(data)]
+  for x in xrange(50):
+    solution = []
+    for value in init:
+      solution += elems[value][1:]
+    if x == 39 or x == 49: output.append(lnslen(solution))	
+    init = solution
+  print "Pt1: {}\nPt2: {}".format(output[0], output[1])
+    
 solve(load(data_in))
