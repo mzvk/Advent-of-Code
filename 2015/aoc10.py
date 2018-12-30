@@ -13,7 +13,7 @@ def lnslen(els):
     dl += len(elems[el][0])
   return dl
 
-def seqdisc(seq, x=0, slist=[]):
+def seqdisc(seq, x = 0, slist = []):
   ss = []
   if not slist: slist = [v for v in xrange(1, 93)]
   for sub in slist:
