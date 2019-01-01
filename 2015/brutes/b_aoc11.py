@@ -1,6 +1,10 @@
-data_in = 'cqjxjnds'
-
 import re
+
+data_in = '../inputs/aoc11.in'
+
+def load(file):
+  with open(file) as x: output = x.read()
+  return output.replace('\n', '')
 
 alph = 'abcdefghijklmnopqrstuvwxyz'
 badc = ['i', 'o', 'l']
@@ -28,9 +32,9 @@ def inc(data, pos = 0, step = 1):
   data[pos] = alph[(ord(data[pos]) - 97 + step) % len(alph)]
   return inc(''.join(reversed(data)), pos + 1) if data[pos] == 'a' and pos < 7 else ''.join(reversed(data)) 
 
-data_in = valid(data_in)
+password = valid(load(data_in))
 while True:
-  data_in = inc(data_in)
-  if re.search(r'([a-z])\1.*((?!\1)[a-z])\2', data_in) and straigth(data_in): break
+  password = inc(password)
+  if re.search(r'([a-z])\1.*((?!\1)[a-z])\2', password) and straigth(password): break
 
-print "WINNER: {}".format(data_in)
+print "WINNER: {}".format(password)
