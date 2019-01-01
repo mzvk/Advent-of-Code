@@ -7,7 +7,7 @@ But time is to *precious* resource to waste ... but I still have **faith**!
 
 # Progress
 
-2015:
-2016:
-2017:
-2018:
+2015: 0/50
+2016: 0/50
+2017: 0/50
+2018: 0/50
