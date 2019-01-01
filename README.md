@@ -7,7 +7,7 @@ But time is to *precious* resource to waste ... but I still have **faith**!
 
 ## Progress
 
-- [ ] 2015: 0/50 :star:
-- [ ] 2016: 0/50 :star: 
-- [ ] 2017: 0/50 :star: 
-- [ ] 2018: 0/50 :star:
+- [ ] 2015: 19/50 :star: 
+- [ ] 2016: 00/50 :star: 
+- [ ] 2017: 00/50 :star: 
+- [ ] 2018: 04/50 :star:
