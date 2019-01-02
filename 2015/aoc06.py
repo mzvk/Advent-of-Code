@@ -5,7 +5,7 @@ import re
 data_in = 'inputs/aoc06.in'
 action = {'on':     lambda x: [1,        x[1] + 1],
           'off':    lambda x: [0,        x[1] - 1],
-		      'toggle': lambda x: [x[0] ^ 1, x[1] + 2]}
+          'toggle': lambda x: [x[0] ^ 1, x[1] + 2]}
 
 def load(file):
   with open(file) as x: output = x.read()
