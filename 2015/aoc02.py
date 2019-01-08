@@ -2,7 +2,7 @@
 
 import sys
 
-data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/aoc02.in'
+data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/set01/aoc02.in'
 
 def load(file):
   with open(file) as x: output = x.read()

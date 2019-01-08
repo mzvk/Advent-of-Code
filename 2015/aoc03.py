@@ -2,7 +2,7 @@
 
 import sys
 
-data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/aoc03.in'
+data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/set01/aoc03.in'
 act = {'<': lambda x: [x[0] - 1, x[1]],
        '>': lambda x: [x[0] + 1, x[1]],
        '^': lambda x: [x[0], x[1] + 1],

@@ -2,7 +2,7 @@
 
 import sys
 
-data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/aoc01.in'
+data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/set01/aoc01.in'
 act = {'(': lambda x: x + 1, ')': lambda x: x - 1}
 
 def load(file):
