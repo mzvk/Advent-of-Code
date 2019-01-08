@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
-data_in = 'inputs/aoc03.in'
-act = {'<': lambda x: [x[0] - 1, x[1]], 
-       '>': lambda x: [x[0] + 1, x[1]], 
-       '^': lambda x: [x[0], x[1] + 1], 
+import sys
+
+data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/aoc03.in'
+act = {'<': lambda x: [x[0] - 1, x[1]],
+       '>': lambda x: [x[0] + 1, x[1]],
+       '^': lambda x: [x[0], x[1] + 1],
        'v': lambda x: [x[0], x[1] - 1]}
 
 def load(file):

@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
-data_in = 'inputs/aoc02.in'
+import sys
+
+data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/aoc02.in'
 
 def load(file):
   with open(file) as x: output = x.read()
