@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-import re
+import re, sys
 
-data_in = 'inputs/aoc05.in'
+data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/set01/aoc05.in'
 
 def load(file):
   with open(file) as x: output = x.read()
