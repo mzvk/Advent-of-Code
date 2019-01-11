@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import hashlib, sys, os
+import hashlib, sys, os, thread
 
 data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/set01/aoc04.in'
 gensfx = lambda s = 0: (str(s + 1*x) for x, _ in enumerate(iter(int, 1)))
@@ -22,6 +22,7 @@ def solve(data):
     sys.stdout.write("\r [{}] {}".format(progress[int(sufix) % 8], sufix))
     sys.stdout.flush()
 
+t_count = 2
 try:
   os.system('setterm -cursor off')
   solve(load(data_in))
