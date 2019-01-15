@@ -2,7 +2,8 @@
 
 import re, sys
 
-data_in = 'inputs/aoc07.in'
+data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/set01/aoc07.in'
+
 data = {}
 gates = {'AND':    lambda args: circuit(args[0]) & circuit(args[1]),
          'OR':     lambda args: circuit(args[0]) | circuit(args[1]),
@@ -15,11 +16,9 @@ def load(file):
   return dict(reversed(line.split(' -> ')) for line in [ol for ol in output.split('\n') if ol])
 
 def circuit(key):
-  try:
-    return int(key)
+  try: return int(key)
   except ValueError:
-    try:
-      return int(data[key])
+    try: return int(data[key])
     except ValueError:
       rgx = re.search(r'^([0-9a-z]+)?(?: )?(NOT|AND|OR|[LR]SHIFT) ([0-9a-z]+)$', data[key])
       if rgx:
