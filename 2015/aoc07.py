@@ -3,7 +3,6 @@
 import re, sys
 
 data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/set01/aoc07.in'
-
 data = {}
 gates = {'AND':    lambda args: circuit(args[0]) & circuit(args[1]),
          'OR':     lambda args: circuit(args[0]) | circuit(args[1]),
@@ -25,8 +24,7 @@ def circuit(key):
         try:
           data[key] = gates[rgx.group(2)]([value for value in rgx.groups()[::2] if not value == None])
         except KeyError:
-          print '-- !FAILED TO ASSERT GATE TYPE! --'
-          sys.exit()
+          sys.exit('-- !FAILED TO ASSERT GATE TYPE! --')
         return data[key]
       else: return circuit(data[key])
 
