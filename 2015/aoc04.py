@@ -6,6 +6,8 @@ data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/set01/aoc04.in'
 tcount = 128
 output = [0, 0]
 gensfx = lambda s = 0, y = 1: (s + y*x for x, _ in enumerate(iter(int, 1)))
+gLock = threading.Lock()
+
 
 class dohash(threading.Thread):
   def __init__(self, offset, data):
@@ -16,11 +18,15 @@ class dohash(threading.Thread):
     for sufix in gensfx(self.offset, tcount):
       hash = hashlib.md5("{}{}".format(self.data, sufix)).hexdigest()
       if hash[:5] == '0' * 5:
+        gLock.acquire()
         if not output[0]: output[0] = sufix
         elif sufix < output[0]: output[0] = sufix
+        gLock.release()
       if hash[:6] == '0' * 6:
+        gLock.acquire()
         if not output[1]: output[1] = sufix
         elif sufix < output[1]: output[1] = sufix
+        gLock.release()
       if (output[0] and sufix > output[0]) and (output[1] and sufix > output[1]): break
 
 def load(file):
