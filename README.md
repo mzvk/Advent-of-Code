@@ -9,7 +9,7 @@ There are not plans for input validation and error checking. :expressionless:
 
 ## Progress
 
-- [ ] 2015: 24/50 :star: 
+- [ ] 2015: 24/50 :star: :six_pointed_star:
 - [ ] 2016: 00/50 :star: 
 - [ ] 2017: 00/50 :star: 
 - [ ] 2018: 04/50 :star:
