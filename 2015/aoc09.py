@@ -3,7 +3,7 @@
 import re, sys
 
 data_in = 'inputs/aoc09.in'
-data_in = 'inputs/aoc09.test'
+#data_in = 'inputs/aoc09.test'
 
 class graph(object):
   def __init__(self, data):

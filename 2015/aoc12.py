@@ -7,6 +7,7 @@ def load(file):
   return output.replace('\n', '')
 
 def solve(data):
+  print data
   total = 0
   seq = ''
   for char in data:
