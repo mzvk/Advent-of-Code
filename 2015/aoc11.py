@@ -25,7 +25,7 @@ def straight(s):
         return 1
 
 string = load(data_in)
-string = 'ghijklmn'
+#string = 'ghijklmn'
 
 while True:
   new = []
