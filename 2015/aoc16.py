@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-import re
+import re, sys
 
-data_in = "inputs/set02/aoc16.in"
+data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/set01/aoc16.in'
 mfcsam = {'children': (3, '=', '='), 'cats': (7, '=', '>'), 'samoyeds': (2, '=', '='), 'pomeranians': (3, '=', '<'),
           'akitas': (0, '=', '='), 'vizslas': (0, '=', '='), 'goldfish': (5, '=', '<'), 'trees': (3, '=', '>'),
           'cars': (2, '=', '='), 'perfumes': (1, '=', '=')}
