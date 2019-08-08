@@ -2,65 +2,29 @@
 
 import re, sys
 
-data_in = 'inputs/aoc09.in'
-#data_in = 'inputs/aoc09.test'
-
-class graph(object):
-  def __init__(self, data):
-    self.nodes = {}
-    self.lsdb(data)
-    self.sp = 0
-  def lsdb(self, data):
-    for line in data:
-      grp = re.search(r'^([A-Za-z]+) to ([A-Za-z]+) = ([0-9]+)', line)
-      if grp.group(1) not in self.nodes: self.nodes[grp.group(1)] = node()
-      if grp.group(2) not in self.nodes: self.nodes[grp.group(2)] = node()
-      self.nodes[grp.group(1)].add(grp.group(2), grp.group(3))
-      self.nodes[grp.group(2)].add(grp.group(1), grp.group(3))
-  def mst(self):
-    for nd in self.nodes:
-      visited = set([nd])
-      root = nd
-      next = ''
-      (cost, path) = (0, 0)
-#      print "Root: {}".format(nd)
-      for _ in xrange(len(self.nodes)):
-        next = ''
-        cost = 0
-        for nn in self.nodes[root].neig:
-#          print "{} -> {}: {}".format(nd, nn, self.nodes[root].neig[nn])
-          if nn not in visited:
-            if not cost:
-              cost = self.nodes[root].neig[nn]
-              next = nn
-            elif self.nodes[nd].neig < cost:
-              cost = self.nodes[root].neig[nn]
-              next = nn
-        visited.add(next)
-        root = next
-        path += cost
-      if not self.sp: self.sp = path
-      elif self.sp > path: self.sp = path
-    print self.sp
-
-  def dump(self):
-    for city in self.nodes:
-      print city
-      self.nodes[city].dump()
-
-class node(object):
-  def __init__(self):
-    self.neig = {}
-  def add(self, neigh, cost):
-    self.neig[neigh] = int(cost)
-  def dump(self):
-    print self.neig
+data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/set01/aoc09.in'
 
 def load(file):
-  with open(file) as x: output = x.read()
-  return [ol for ol in output.split('\n') if ol]
+  output = {}
+  with open(file) as x: nodes = x.read()
+  for line in nodes.split('\n'):
+    matchex = re.match(r'([A-Za-z]+) to ([A-Za-z]+) = ([0-9]+)', line)
+    if matchex:
+      if matchex.group(1) not in output: output[matchex.group(1)] = {matchex.group(2): int(matchex.group(3))}
+      else: output[matchex.group(1)][matchex.group(2)] = int(matchex.group(3))
+      if matchex.group(2) not in output: output[matchex.group(2)] = {matchex.group(1): int(matchex.group(3))}
+      else: output[matchex.group(2)][matchex.group(1)] = int(matchex.group(3))
+  return output
 
-graph = graph(load(data_in))
-graph.mst()
+def scpp(graph, current='', visited=None, cost=0, min=65535, max=0):   ## Santa Claus Path Protocol
+   if visited == None: visited = set()
+   if current: visited.add(current)
+   for next in (set(graph.keys()) - visited):
+      (min, max) = scpp(graph, next, visited.copy(), cost+graph[current][next] if current else cost, min, max)
+   if(len(visited) == len(graph.keys())):
+      if cost < min: min = cost
+      if cost > max: max = cost
+   return (min, max)
 
-graph.dump()
+result = scpp(load(data_in))
+print "Pt1: {}\nPt2: {}".format(result[0], result[1])

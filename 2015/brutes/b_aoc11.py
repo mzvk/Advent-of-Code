@@ -16,7 +16,7 @@ def valid(data):
   inc = 0
   for idx, char in enumerate(temp):
     if inc: data[idx] = 'a'
-    if char in badc and not inc: 
+    if char in badc and not inc:
 	  data[idx] = alph[(ord(char) - 97 + 1) % len(alph)]
 	  inc = 1
   return ''.join(data)
@@ -33,8 +33,16 @@ def inc(data, pos = 0, step = 1):
   return inc(''.join(reversed(data)), pos + 1) if data[pos] == 'a' and pos < 7 else ''.join(reversed(data)) 
 
 password = valid(load(data_in))
+result = [0, 0]
+
 while True:
   password = inc(password)
   if re.search(r'([a-z])\1.*((?!\1)[a-z])\2', password) and straigth(password): break
+result[0] = password
 
-print "WINNER: {}".format(password)
+while True:
+  password = inc(password)
+  if re.search(r'([a-z])\1.*((?!\1)[a-z])\2', password) and straigth(password): break
+result[1] = password
+
+print "Pt1: {}\nPt2: {}".format(result[0], result[1])
