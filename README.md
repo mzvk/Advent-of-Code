@@ -17,4 +17,4 @@ There are not plans for input validation and error checking. :expressionless:
 ## Improve:
 
 - [ ] 2015:aoc06
-- [ ] 2015:aoc10
+- [ ] 2015:aoc11
