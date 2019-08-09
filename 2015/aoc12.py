@@ -26,12 +26,12 @@ def sgen(input, ptr=0):
       else: yield input[ptr]
       ptr += 1
 
-def solve(input, ot=0, bv=0, bve=0):
+def parse(input, ot=0, bv=0, bve=0):
    ign = 0
    bvt = bve
    for char in input:
       if char in ['{','[']:
-         (bv, bve) = solve(input, 1 if char == '{' else 0, bv, bve)
+         (bv, bve) = parse(input, 1 if char == '{' else 0, bv, bve)
       elif char in ['}', ']']:
          return (bv, bvt if ign else bve)
       else:
@@ -41,6 +41,8 @@ def solve(input, ot=0, bv=0, bve=0):
          elif char == "red" and ot: ign = 1
    return (bv, bve)
 
-tinput = sgen(load(data_in))
-result = solve(tinput)
-print "Pt1: {}\nPt2: {}".format(result[0], result[1])
+def solve(input):
+   result = parse(sgen(input))
+   print "Pt1: {}\nPt2: {}".format(result[0], result[1])
+
+solve(load(data_in))
