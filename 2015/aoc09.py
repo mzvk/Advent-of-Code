@@ -24,7 +24,7 @@ def scpp(graph, current='', visited=None, cost=0, min=65535, max=0):   ## Santa 
    if(len(visited) == len(graph.keys())):
       if cost < min: min = cost
       if cost > max: max = cost
+   if current == '': print "Pt1: {}\nPt2: {}".format(min, max)
    return (min, max)
 
-result = scpp(load(data_in))
-print "Pt1: {}\nPt2: {}".format(result[0], result[1])
+_ = scpp(load(data_in))
