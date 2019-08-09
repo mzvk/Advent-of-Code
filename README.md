@@ -12,8 +12,9 @@ There are not plans for input validation and error checking. :expressionless:
 - [ ] 2015: 28/50 :star2: :star2: :star: :sparkles:
 - [ ] 2016: 00/50 
 - [ ] 2017: 00/50  
-- [ ] 2018: 04/50 
+- [ ] 2018: 04/50 :sparkles:
 
 ## Improve:
 
 - [ ] 2015:aoc06
+- [ ] 2016:aoc10
