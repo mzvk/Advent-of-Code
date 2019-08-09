@@ -1,25 +1,46 @@
 #!/usr/bin/env python
 
+import sys
+
 data_in = 'inputs/aoc12.in'
 
 def load(file):
   with open(file) as x: output = x.read()
   return output.replace('\n', '')
 
-def solve(data):
-  print data
-  total = 0
-  seq = ''
-  for char in data:
-    if char == '-': seq = '-'
-    else:
-      try:
-        int(char)
-        seq += char
-      except ValueError:
-        if seq:
-          total += int(seq)
-          seq = ''
-  print "Pt1: {}".format(total)
+def ifnum(char):
+   try:
+      return (int(char)^int(char))+1  ## for the negative and 0 values
+   except ValueError: return 0
 
-solve(load(data_in))
+def sgen(input, ptr=0):
+   (seq, seqt, neg) = ('', 0, 0)
+   while ptr < len(input):
+      if input[ptr] == '"': seqt ^= 1
+      elif input[ptr] == "-": neg = 1
+      elif ifnum(input[ptr]) or seqt: seq += input[ptr]
+      elif seq:
+         ptr -= 1
+         yield seq if not neg else "-"+seq
+         (seq, neg) = ('', 0)
+      else: yield input[ptr]
+      ptr += 1
+
+def solve(input, ot=0, bv=0, bve=0):
+   ign = 0
+   bvt = bve
+   for char in input:
+      if char in ['{','[']:
+         (bv, bve) = solve(input, 1 if char == '{' else 0, bv, bve)
+      elif char in ['}', ']']:
+         return (bv, bvt if ign else bve)
+      else:
+         if ifnum(char):
+            bv  += int(char)
+            bve += int(char)
+         elif char == "red" and ot: ign = 1
+   return (bv, bve)
+
+tinput = sgen(load(data_in))
+result = solve(tinput)
+print "Pt1: {}\nPt2: {}".format(result[0], result[1])
