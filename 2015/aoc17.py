@@ -3,7 +3,7 @@
 import sys
 
 eggnog = 150
-low = 100
+low = 150
 data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/set01/aoc17.in'
 
 def load(file):
