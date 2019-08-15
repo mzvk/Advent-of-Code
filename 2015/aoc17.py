@@ -3,7 +3,7 @@
 import sys
 
 eggnog = 150
-low = 150
+low = 65535
 data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/set01/aoc17.in'
 
 def load(file):
@@ -28,6 +28,7 @@ def firstfit(idx=0, capa=0, total=0, totallow=0, elnu=0):
 def solve(input):
    global cntnr
    cntnr = input
+   low = len(cntnr)
    result = firstfit()
    print "Pt1: {}\nPt2: {}".format(result[0], result[1])
 
