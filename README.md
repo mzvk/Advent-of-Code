@@ -9,7 +9,7 @@ There are not plans for input validation and error checking. :expressionless:
 
 ## Progress
 
-- [ ] 2015: 30/50 :star2: :star2: :star2:
+- [ ] 2015: 31/50 :star2: :star2: :star2: :star1:
 - [ ] 2016: 00/50 
 - [ ] 2017: 00/50  
 - [ ] 2018: 04/50 :sparkles:
