@@ -12,7 +12,7 @@ There are not plans for input validation and error checking. :expressionless:
 - [ ] 2015: 32/50 :rage1:
 - [ ] 2016: 00/50 :finnadie:
 - [ ] 2017: 00/50 :finnadie:
-- [ ] 2018: 04/50 :finnadie:
+- [ ] 2018: 04/50 :feelsgood:
 
 ## Improve:
 
