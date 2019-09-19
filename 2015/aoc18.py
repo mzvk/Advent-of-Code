@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys, copy, time
+import sys, copy
 
 data_in = sys.argv[1] if len(sys.argv[1:]) > 0 else 'inputs/set01/aoc18.in'
 MAX_EPOCH = 100
