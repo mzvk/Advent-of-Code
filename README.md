@@ -15,6 +15,8 @@ There are not plans for input validation and error checking. :expressionless:
 - [ ] 2018: 04/50 :feelsgood:
 
 legend:
+:finnadie: (0) :feelsgood: (1-6) :goberserk: (7-12)
+
 - 0     -> :finnadie:
 - 1-6   -> :feelsgood:
 - 7-12  -> :goberserk:
