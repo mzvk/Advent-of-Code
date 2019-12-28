@@ -38,7 +38,7 @@ def osap(graph, current='', visited=None, cost=0, max=0, vlist=[]):
       max = osap(graph, next, visited.copy(), cost+graph[current][next] if current else 0, max, copy.deepcopy(vlist))
    if(len(visited) == len(graph.keys())):
       cost += graph[current][vlist[0]]
-      if cost > max: max = cost
+      max = max(max, cost)
    return max
 
 def solve(data):
