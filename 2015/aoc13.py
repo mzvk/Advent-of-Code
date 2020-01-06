@@ -29,17 +29,17 @@ def add_mzvk(data):
    data['Mzvk'] = {key:0 for key in data.keys()}
    return data
 
-def osap(graph, current='', visited=None, cost=0, max=0, vlist=[]):
+def osap(graph, current='', visited=None, cost=0, maxh=0, vlist=[]):
    if visited == None: visited = set()
    if current:
       visited.add(current)
       vlist.append(current)
    for next in (set(graph.keys()) - visited):
-      max = osap(graph, next, visited.copy(), cost+graph[current][next] if current else 0, max, copy.deepcopy(vlist))
+      maxh = osap(graph, next, visited.copy(), cost+graph[current][next] if current else 0, maxh, copy.deepcopy(vlist))
    if(len(visited) == len(graph.keys())):
       cost += graph[current][vlist[0]]
-      max = max(max, cost)
-   return max
+      maxh = max(maxh, cost)
+   return maxh
 
 def solve(data):
   result = []
