@@ -19,5 +19,6 @@ legend:
 
 ## Improve:
 
-- [ ] 2015:aoc06
-- [ ] 2015:aoc11
+- [ ] 2015:aoc06 (parse inputs instead of whole grid)
+- [ ] 2015:aoc11 (not brute-force)
+- [ ] 2015:aoc15 (different generator for brute-force, genetic alg.)
