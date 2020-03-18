@@ -35,8 +35,9 @@ def calories(ingr, stats):
 def solve(data):
   result = [0, 0]
   for v in gen_mix(len(data), 100):
-     result[0] = max(score(v, data), result[0])
-     if calories(v, data) == 500: result[1] = max(score(v, data), result[1])
+     cs = score(v, data)
+     result[0] = max(cs, result[0])
+     if calories(v, data) == 500: result[1] = max(cs, result[1])
   print "Pt1: {}\nPt2: {}".format(result[0], result[1])
 
 solve(load(data_in))
